@@ -32,18 +32,19 @@
             this.tabPageAjutor = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageIntroducereDate = new System.Windows.Forms.TabPage();
-            this.tabPageTiparire = new System.Windows.Forms.TabPage();
-            this.tabPageModificareProc = new System.Windows.Forms.TabPage();
-            this.tabPageIesire = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonActualizareDate = new System.Windows.Forms.Button();
-            this.buttonAdaugAngajati = new System.Windows.Forms.Button();
-            this.buttonStergAngajati = new System.Windows.Forms.Button();
             this.buttonCalculSalarii = new System.Windows.Forms.Button();
-            this.buttonStatPlata = new System.Windows.Forms.Button();
+            this.buttonStergAngajati = new System.Windows.Forms.Button();
+            this.buttonAdaugAngajati = new System.Windows.Forms.Button();
+            this.buttonActualizareDate = new System.Windows.Forms.Button();
+            this.tabPageTiparire = new System.Windows.Forms.TabPage();
             this.buttonFluturasi = new System.Windows.Forms.Button();
+            this.buttonStatPlata = new System.Windows.Forms.Button();
+            this.tabPageModificareProc = new System.Windows.Forms.TabPage();
             this.buttonModifProc = new System.Windows.Forms.Button();
+            this.tabPageIesire = new System.Windows.Forms.TabPage();
             this.buttonIesire = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.tabControl1.SuspendLayout();
             this.tabPageAjutor.SuspendLayout();
             this.tabPageIntroducereDate.SuspendLayout();
@@ -51,6 +52,7 @@
             this.tabPageModificareProc.SuspendLayout();
             this.tabPageIesire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -75,7 +77,7 @@
             this.tabPageAjutor.Name = "tabPageAjutor";
             this.tabPageAjutor.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageAjutor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPageAjutor.Size = new System.Drawing.Size(1103, 112);
+            this.tabPageAjutor.Size = new System.Drawing.Size(1953, 139);
             this.tabPageAjutor.TabIndex = 0;
             this.tabPageAjutor.Text = "AJUTOR";
             this.tabPageAjutor.UseVisualStyleBackColor = true;
@@ -84,9 +86,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(258, 13);
+            this.label1.Location = new System.Drawing.Point(634, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(602, 60);
+            this.label1.Size = new System.Drawing.Size(586, 59);
             this.label1.TabIndex = 0;
             this.label1.Text = "Aplicatie calcul salarii angajati";
             // 
@@ -104,6 +106,44 @@
             this.tabPageIntroducereDate.Text = "INTRODUCERE DATE";
             this.tabPageIntroducereDate.UseVisualStyleBackColor = true;
             // 
+            // buttonCalculSalarii
+            // 
+            this.buttonCalculSalarii.Location = new System.Drawing.Point(84, 104);
+            this.buttonCalculSalarii.Name = "buttonCalculSalarii";
+            this.buttonCalculSalarii.Size = new System.Drawing.Size(156, 23);
+            this.buttonCalculSalarii.TabIndex = 3;
+            this.buttonCalculSalarii.Text = "Calcul Salarii";
+            this.buttonCalculSalarii.UseVisualStyleBackColor = true;
+            // 
+            // buttonStergAngajati
+            // 
+            this.buttonStergAngajati.Location = new System.Drawing.Point(84, 75);
+            this.buttonStergAngajati.Name = "buttonStergAngajati";
+            this.buttonStergAngajati.Size = new System.Drawing.Size(156, 23);
+            this.buttonStergAngajati.TabIndex = 2;
+            this.buttonStergAngajati.Text = "Stergere Angajati";
+            this.buttonStergAngajati.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdaugAngajati
+            // 
+            this.buttonAdaugAngajati.Location = new System.Drawing.Point(84, 46);
+            this.buttonAdaugAngajati.Name = "buttonAdaugAngajati";
+            this.buttonAdaugAngajati.Size = new System.Drawing.Size(156, 23);
+            this.buttonAdaugAngajati.TabIndex = 1;
+            this.buttonAdaugAngajati.Text = "Adaugare Angajati";
+            this.buttonAdaugAngajati.UseVisualStyleBackColor = true;
+            this.buttonAdaugAngajati.Click += new System.EventHandler(this.buttonAdaugAngajati_Click);
+            // 
+            // buttonActualizareDate
+            // 
+            this.buttonActualizareDate.Location = new System.Drawing.Point(84, 17);
+            this.buttonActualizareDate.Name = "buttonActualizareDate";
+            this.buttonActualizareDate.Size = new System.Drawing.Size(156, 23);
+            this.buttonActualizareDate.TabIndex = 0;
+            this.buttonActualizareDate.Text = "Actualizare Date";
+            this.buttonActualizareDate.UseVisualStyleBackColor = true;
+            this.buttonActualizareDate.Click += new System.EventHandler(this.buttonActualizareDate_Click);
+            // 
             // tabPageTiparire
             // 
             this.tabPageTiparire.Controls.Add(this.buttonFluturasi);
@@ -116,6 +156,24 @@
             this.tabPageTiparire.Text = "TIPARIRE";
             this.tabPageTiparire.UseVisualStyleBackColor = true;
             // 
+            // buttonFluturasi
+            // 
+            this.buttonFluturasi.Location = new System.Drawing.Point(253, 48);
+            this.buttonFluturasi.Name = "buttonFluturasi";
+            this.buttonFluturasi.Size = new System.Drawing.Size(105, 23);
+            this.buttonFluturasi.TabIndex = 1;
+            this.buttonFluturasi.Text = "Fluturasi";
+            this.buttonFluturasi.UseVisualStyleBackColor = true;
+            // 
+            // buttonStatPlata
+            // 
+            this.buttonStatPlata.Location = new System.Drawing.Point(253, 19);
+            this.buttonStatPlata.Name = "buttonStatPlata";
+            this.buttonStatPlata.Size = new System.Drawing.Size(105, 23);
+            this.buttonStatPlata.TabIndex = 0;
+            this.buttonStatPlata.Text = "Stat Plata";
+            this.buttonStatPlata.UseVisualStyleBackColor = true;
+            // 
             // tabPageModificareProc
             // 
             this.tabPageModificareProc.Controls.Add(this.buttonModifProc);
@@ -126,6 +184,15 @@
             this.tabPageModificareProc.TabIndex = 3;
             this.tabPageModificareProc.Text = "MODIFICARE PROCENTE";
             this.tabPageModificareProc.UseVisualStyleBackColor = true;
+            // 
+            // buttonModifProc
+            // 
+            this.buttonModifProc.Location = new System.Drawing.Point(355, 17);
+            this.buttonModifProc.Name = "buttonModifProc";
+            this.buttonModifProc.Size = new System.Drawing.Size(149, 23);
+            this.buttonModifProc.TabIndex = 0;
+            this.buttonModifProc.Text = "Modificare Procente";
+            this.buttonModifProc.UseVisualStyleBackColor = true;
             // 
             // tabPageIesire
             // 
@@ -138,78 +205,6 @@
             this.tabPageIesire.Text = "IESIRE";
             this.tabPageIesire.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 197);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1957, 256);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // buttonActualizareDate
-            // 
-            this.buttonActualizareDate.Location = new System.Drawing.Point(84, 17);
-            this.buttonActualizareDate.Name = "buttonActualizareDate";
-            this.buttonActualizareDate.Size = new System.Drawing.Size(156, 23);
-            this.buttonActualizareDate.TabIndex = 0;
-            this.buttonActualizareDate.Text = "Actualizare Date";
-            this.buttonActualizareDate.UseVisualStyleBackColor = true;
-            // 
-            // buttonAdaugAngajati
-            // 
-            this.buttonAdaugAngajati.Location = new System.Drawing.Point(84, 46);
-            this.buttonAdaugAngajati.Name = "buttonAdaugAngajati";
-            this.buttonAdaugAngajati.Size = new System.Drawing.Size(156, 23);
-            this.buttonAdaugAngajati.TabIndex = 1;
-            this.buttonAdaugAngajati.Text = "Adaugare Angajati";
-            this.buttonAdaugAngajati.UseVisualStyleBackColor = true;
-            // 
-            // buttonStergAngajati
-            // 
-            this.buttonStergAngajati.Location = new System.Drawing.Point(84, 75);
-            this.buttonStergAngajati.Name = "buttonStergAngajati";
-            this.buttonStergAngajati.Size = new System.Drawing.Size(156, 23);
-            this.buttonStergAngajati.TabIndex = 2;
-            this.buttonStergAngajati.Text = "Stergere Angajati";
-            this.buttonStergAngajati.UseVisualStyleBackColor = true;
-            // 
-            // buttonCalculSalarii
-            // 
-            this.buttonCalculSalarii.Location = new System.Drawing.Point(84, 104);
-            this.buttonCalculSalarii.Name = "buttonCalculSalarii";
-            this.buttonCalculSalarii.Size = new System.Drawing.Size(156, 23);
-            this.buttonCalculSalarii.TabIndex = 3;
-            this.buttonCalculSalarii.Text = "Calcul Salarii";
-            this.buttonCalculSalarii.UseVisualStyleBackColor = true;
-            // 
-            // buttonStatPlata
-            // 
-            this.buttonStatPlata.Location = new System.Drawing.Point(253, 19);
-            this.buttonStatPlata.Name = "buttonStatPlata";
-            this.buttonStatPlata.Size = new System.Drawing.Size(105, 23);
-            this.buttonStatPlata.TabIndex = 0;
-            this.buttonStatPlata.Text = "Stat Plata";
-            this.buttonStatPlata.UseVisualStyleBackColor = true;
-            // 
-            // buttonFluturasi
-            // 
-            this.buttonFluturasi.Location = new System.Drawing.Point(253, 48);
-            this.buttonFluturasi.Name = "buttonFluturasi";
-            this.buttonFluturasi.Size = new System.Drawing.Size(105, 23);
-            this.buttonFluturasi.TabIndex = 1;
-            this.buttonFluturasi.Text = "Fluturasi";
-            this.buttonFluturasi.UseVisualStyleBackColor = true;
-            // 
-            // buttonModifProc
-            // 
-            this.buttonModifProc.Location = new System.Drawing.Point(355, 17);
-            this.buttonModifProc.Name = "buttonModifProc";
-            this.buttonModifProc.Size = new System.Drawing.Size(149, 23);
-            this.buttonModifProc.TabIndex = 0;
-            this.buttonModifProc.Text = "Modificare Procente";
-            this.buttonModifProc.UseVisualStyleBackColor = true;
-            // 
             // buttonIesire
             // 
             this.buttonIesire.Location = new System.Drawing.Point(546, 18);
@@ -219,6 +214,20 @@
             this.buttonIesire.Text = "Iesire";
             this.buttonIesire.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonIesire.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 197);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1957, 256);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // Form1
             // 
@@ -238,6 +247,7 @@
             this.tabPageModificareProc.ResumeLayout(false);
             this.tabPageIesire.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,6 +270,7 @@
         private System.Windows.Forms.Button buttonStatPlata;
         private System.Windows.Forms.Button buttonModifProc;
         private System.Windows.Forms.Button buttonIesire;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }
 
