@@ -32,6 +32,8 @@
             this.tabPageAjutor = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageIntroducereDate = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxCautare = new System.Windows.Forms.TextBox();
             this.buttonStergAngajati = new System.Windows.Forms.Button();
             this.buttonAdaugAngajati = new System.Windows.Forms.Button();
             this.buttonActualizareDate = new System.Windows.Forms.Button();
@@ -93,6 +95,8 @@
             // 
             // tabPageIntroducereDate
             // 
+            this.tabPageIntroducereDate.Controls.Add(this.label2);
+            this.tabPageIntroducereDate.Controls.Add(this.textBoxCautare);
             this.tabPageIntroducereDate.Controls.Add(this.buttonStergAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonAdaugAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonActualizareDate);
@@ -103,6 +107,23 @@
             this.tabPageIntroducereDate.TabIndex = 1;
             this.tabPageIntroducereDate.Text = "INTRODUCERE DATE";
             this.tabPageIntroducereDate.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(267, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Cautare:";
+            // 
+            // textBoxCautare
+            // 
+            this.textBoxCautare.Location = new System.Drawing.Point(347, 18);
+            this.textBoxCautare.Name = "textBoxCautare";
+            this.textBoxCautare.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCautare.TabIndex = 3;
+            this.textBoxCautare.TextChanged += new System.EventHandler(this.textBoxCautare_TextChanged);
             // 
             // buttonStergAngajati
             // 
@@ -183,6 +204,7 @@
             this.buttonModifProc.TabIndex = 0;
             this.buttonModifProc.Text = "Modificare Procente";
             this.buttonModifProc.UseVisualStyleBackColor = true;
+            this.buttonModifProc.Click += new System.EventHandler(this.buttonModifProc_Click);
             // 
             // tabPageIesire
             // 
@@ -234,6 +256,7 @@
             this.tabPageAjutor.ResumeLayout(false);
             this.tabPageAjutor.PerformLayout();
             this.tabPageIntroducereDate.ResumeLayout(false);
+            this.tabPageIntroducereDate.PerformLayout();
             this.tabPageTiparire.ResumeLayout(false);
             this.tabPageModificareProc.ResumeLayout(false);
             this.tabPageIesire.ResumeLayout(false);
@@ -261,6 +284,8 @@
         private System.Windows.Forms.Button buttonModifProc;
         private System.Windows.Forms.Button buttonIesire;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxCautare;
     }
 }
 

@@ -118,5 +118,31 @@ namespace TPBD_lab_project
                 Environment.Exit(1);
             }
         }
+
+        private void buttonModifProc_Click(object sender, EventArgs e)
+        {
+            //var dialogBox = new Form3();
+            //var result = dialogBox.ShowDialog();
+            //if (result == DialogResult.Cancel)
+            //{
+            //    GridViewUpdate();
+            //}
+        }
+
+        private void textBoxCautare_TextChanged(object sender, EventArgs e)
+        {
+            try {
+                strSQL = "SELECT * FROM salarii_angajati WHERE UPPER(nume) LIKE UPPER('%" + textBoxCautare.Text
+                    + "%') OR UPPER(prenume) LIKE UPPER('%" + textBoxCautare.Text + "%')";
+                da = new OracleDataAdapter(strSQL, cn);
+                ds = new DataSet();
+                da.Fill(ds, "salarii_angajati");
+                dataGridView1.DataSource = ds.Tables["salarii_angajati"].DefaultView;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + "\nEroare la filtrare...");
+            }
+        }
     }
 }
