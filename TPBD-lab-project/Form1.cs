@@ -109,5 +109,14 @@ namespace TPBD_lab_project
                 MessageBox.Show(ex.Message.ToString() + "\nEroare la stergerea angajatului...");
             }
         }
+
+        private void buttonIesire_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Doriti sa iesiti din aplicatie?", "Iesire", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Environment.Exit(1);
+            }
+        }
     }
 }

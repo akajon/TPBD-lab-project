@@ -76,7 +76,7 @@
             this.tabPageAjutor.Name = "tabPageAjutor";
             this.tabPageAjutor.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageAjutor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPageAjutor.Size = new System.Drawing.Size(1953, 139);
+            this.tabPageAjutor.Size = new System.Drawing.Size(1953, 110);
             this.tabPageAjutor.TabIndex = 0;
             this.tabPageAjutor.Text = "AJUTOR";
             this.tabPageAjutor.UseVisualStyleBackColor = true;
@@ -141,7 +141,7 @@
             this.tabPageTiparire.Location = new System.Drawing.Point(4, 35);
             this.tabPageTiparire.Name = "tabPageTiparire";
             this.tabPageTiparire.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTiparire.Size = new System.Drawing.Size(1953, 139);
+            this.tabPageTiparire.Size = new System.Drawing.Size(1953, 110);
             this.tabPageTiparire.TabIndex = 2;
             this.tabPageTiparire.Text = "TIPARIRE";
             this.tabPageTiparire.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.tabPageModificareProc.Location = new System.Drawing.Point(4, 35);
             this.tabPageModificareProc.Name = "tabPageModificareProc";
             this.tabPageModificareProc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageModificareProc.Size = new System.Drawing.Size(1953, 139);
+            this.tabPageModificareProc.Size = new System.Drawing.Size(1953, 110);
             this.tabPageModificareProc.TabIndex = 3;
             this.tabPageModificareProc.Text = "MODIFICARE PROCENTE";
             this.tabPageModificareProc.UseVisualStyleBackColor = true;
@@ -190,7 +190,7 @@
             this.tabPageIesire.Location = new System.Drawing.Point(4, 35);
             this.tabPageIesire.Name = "tabPageIesire";
             this.tabPageIesire.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIesire.Size = new System.Drawing.Size(1953, 139);
+            this.tabPageIesire.Size = new System.Drawing.Size(1953, 110);
             this.tabPageIesire.TabIndex = 4;
             this.tabPageIesire.Text = "IESIRE";
             this.tabPageIesire.UseVisualStyleBackColor = true;
@@ -204,6 +204,7 @@
             this.buttonIesire.Text = "Iesire";
             this.buttonIesire.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonIesire.UseVisualStyleBackColor = false;
+            this.buttonIesire.Click += new System.EventHandler(this.buttonIesire_Click);
             // 
             // dataGridView1
             // 
