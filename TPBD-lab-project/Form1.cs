@@ -43,7 +43,8 @@ namespace TPBD_lab_project
         {
             try
             {
-                cn = new OracleConnection("DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID=STUDENT");
+                cn = new OracleConnection("DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY "
+                    + "INFO=True;USER ID=STUDENT");
                 cn.Open();
                 strSQL = "SELECT * FROM salarii_angajati";
                 da = new OracleDataAdapter(strSQL, cn);
@@ -53,7 +54,7 @@ namespace TPBD_lab_project
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString() + "\nEroare la actualizarea datelor din tabel...");
             }
 
             dataGridView1.DataSource = ds.Tables["salarii_angajati"];
@@ -78,7 +79,7 @@ namespace TPBD_lab_project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nu s-au putut actualiza datele:\n" + ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString() + "\nEroare la actualizarea datelor din tabel...");
             }
         }
 
@@ -87,7 +88,7 @@ namespace TPBD_lab_project
             string nume = dataGridView1.CurrentRow.Cells["NUME"].Value.ToString();
             string prenume = dataGridView1.CurrentRow.Cells["PRENUME"].Value.ToString();
             DialogResult dialog = MessageBox.Show("Doriti sa stergeti angajatul cu numele " + nume + " "
-                + prenume + "?", "Stergere", MessageBoxButtons.YesNo);
+                + prenume + "?", "Stergere angajat", MessageBoxButtons.YesNo);
 
             try
             {
@@ -100,12 +101,12 @@ namespace TPBD_lab_project
                         Linie.Delete();
                         da.Update(ds.Tables["salarii_angajati"]);
                     }
-                    MessageBox.Show("Angajat sters cu succes");
+                    MessageBox.Show("Angajat sters cu succes!");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nu s-a putut sterge angajatul:\n" + ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString() + "\nEroare la stergerea angajatului...");
             }
         }
     }

@@ -32,7 +32,6 @@
             this.tabPageAjutor = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageIntroducereDate = new System.Windows.Forms.TabPage();
-            this.buttonCalculSalarii = new System.Windows.Forms.Button();
             this.buttonStergAngajati = new System.Windows.Forms.Button();
             this.buttonAdaugAngajati = new System.Windows.Forms.Button();
             this.buttonActualizareDate = new System.Windows.Forms.Button();
@@ -66,7 +65,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(10, 8);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1961, 178);
+            this.tabControl1.Size = new System.Drawing.Size(1961, 149);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 0;
             // 
@@ -94,26 +93,16 @@
             // 
             // tabPageIntroducereDate
             // 
-            this.tabPageIntroducereDate.Controls.Add(this.buttonCalculSalarii);
             this.tabPageIntroducereDate.Controls.Add(this.buttonStergAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonAdaugAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonActualizareDate);
             this.tabPageIntroducereDate.Location = new System.Drawing.Point(4, 35);
             this.tabPageIntroducereDate.Name = "tabPageIntroducereDate";
             this.tabPageIntroducereDate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIntroducereDate.Size = new System.Drawing.Size(1953, 139);
+            this.tabPageIntroducereDate.Size = new System.Drawing.Size(1953, 110);
             this.tabPageIntroducereDate.TabIndex = 1;
             this.tabPageIntroducereDate.Text = "INTRODUCERE DATE";
             this.tabPageIntroducereDate.UseVisualStyleBackColor = true;
-            // 
-            // buttonCalculSalarii
-            // 
-            this.buttonCalculSalarii.Location = new System.Drawing.Point(84, 104);
-            this.buttonCalculSalarii.Name = "buttonCalculSalarii";
-            this.buttonCalculSalarii.Size = new System.Drawing.Size(156, 23);
-            this.buttonCalculSalarii.TabIndex = 3;
-            this.buttonCalculSalarii.Text = "Calcul Salarii";
-            this.buttonCalculSalarii.UseVisualStyleBackColor = true;
             // 
             // buttonStergAngajati
             // 
@@ -219,10 +208,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 197);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 168);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1957, 256);
+            this.dataGridView1.Size = new System.Drawing.Size(1957, 285);
             this.dataGridView1.TabIndex = 1;
             // 
             // fileSystemWatcher1
@@ -263,7 +252,6 @@
         private System.Windows.Forms.TabPage tabPageIesire;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonCalculSalarii;
         private System.Windows.Forms.Button buttonStergAngajati;
         private System.Windows.Forms.Button buttonAdaugAngajati;
         private System.Windows.Forms.Button buttonActualizareDate;

@@ -38,27 +38,26 @@ namespace TPBD_lab_project
         {
             try
             {
-                cn = new OracleConnection("DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID=STUDENT");
+                cn = new OracleConnection("DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;"
+                    + "PERSIST SECURITY INFO=True;USER ID=STUDENT");
                 OracleCommand comanda;
                 OracleTransaction tranzactie;
                 try
                 {
                     cn.Open();
                     tranzactie = cn.BeginTransaction(IsolationLevel.ReadCommitted);
-                    Console.WriteLine("INSERT INTO salarii_angajati(nume, prenume, functie, salar_baza, spor_procent, premii_brute, retineri) VALUES('"
-                        + textBoxNume.Text + "', '" + textBoxPrenume.Text + "', '" + textBoxFunctie.Text + "', " + textBoxSalarBaza.Text + ", " + textBoxSpor.Text +
-                        ", " + textBoxPremii.Text + ", " + textBoxRetineri.Text + ")");
-                    comanda = new OracleCommand("INSERT INTO salarii_angajati(nume, prenume, functie, salar_baza, spor_procent, premii_brute, retineri) VALUES('"
-                        + textBoxNume.Text + "', '" + textBoxPrenume.Text + "', '" + textBoxFunctie.Text + "', " + textBoxSalarBaza.Text + ", " + textBoxSpor.Text + 
-                        ", " + textBoxPremii.Text + ", " + textBoxRetineri.Text + ")", cn);
+                    comanda = new OracleCommand("INSERT INTO salarii_angajati(nume, prenume, functie, salar_baza,"
+                        + "spor_procent, premii_brute, retineri) VALUES('" + textBoxNume.Text + "', '"
+                        + textBoxPrenume.Text + "', '" + textBoxFunctie.Text + "', " + textBoxSalarBaza.Text
+                        + ", " + textBoxSpor.Text + ", " + textBoxPremii.Text + ", " + textBoxRetineri.Text + ")", cn);
                     comanda.Transaction = tranzactie;
                     comanda.ExecuteNonQuery();
                     tranzactie.Commit();
-                    MessageBox.Show("Datele au fost introduse");
+                    MessageBox.Show("Angajatul au fost introduse");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString() + "\nEroare la adaugare date in tabela");
+                    MessageBox.Show(ex.Message.ToString() + "\nEroare la adaugarea angajatului...");
 
                 }
             }
