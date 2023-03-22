@@ -12,22 +12,23 @@ CREATE TABLE salarii_angajati(
 	prenume VARCHAR(50),
 	functie VARCHAR(30),
 	salar_baza INTEGER,
-	spor_procent INTEGER,
+	spor_procent INTEGER DEFAULT 0,
 	premii_brute INTEGER DEFAULT 0,
 	total_brut INTEGER,
 	brut_impozabil INTEGER,
 	impozit INTEGER,
 	cas INTEGER,
 	cass INTEGER,
-	retineri INTEGER,
-	virat_card INTEGER);
+	retineri INTEGER DEFAULT 0,
+	virat_card INTEGER,
+	poza BLOB);
 
 CREATE TABLE valori_procentuale_impozite(
 	nr_crt INTEGER PRIMARY KEY,
 	cas_procent NUMBER(3,2),
 	cass_procent NUMBER(3,2),
 	impozit_procent NUMBER(3,2),
-	parola VARCHAR(100));
+	parola VARCHAR(255));
 	
 	
 -- Add auto increment on salarii_angajati.nr_crt
@@ -36,11 +37,8 @@ CREATE SEQUENCE nr_crt_seq START WITH 1;
 CREATE OR REPLACE TRIGGER nr_crt_increment 
 BEFORE INSERT ON salarii_angajati 
 FOR EACH ROW
-
 BEGIN
-  SELECT nr_crt_seq.NEXTVAL
-  INTO   :new.nr_crt
-  FROM   dual;
+  SELECT nr_crt_seq.NEXTVAL INTO :NEW.nr_crt FROM dual;
 END;
 /
 -- End add auto increment
@@ -80,8 +78,6 @@ BEGIN
 	:NEW.cas := cas;
 	:NEW.cass := cass;
 	:NEW.virat_card := virat_card;
-
-	
 END;
 /
 
