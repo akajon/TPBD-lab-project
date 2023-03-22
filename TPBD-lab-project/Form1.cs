@@ -18,7 +18,6 @@ namespace TPBD_lab_project
         DataSet ds;
         OracleCommandBuilder comanda;
         BindingSource bs1 = new BindingSource();
-        String strSQL;
         public Form1()
         {
             InitializeComponent();           
@@ -26,7 +25,7 @@ namespace TPBD_lab_project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GridViewUpdate();
+            GridViewUpdate("SELECT * FROM salarii_angajati");
         }
 
         private void buttonAdaugAngajati_Click(object sender, EventArgs e)
@@ -35,19 +34,18 @@ namespace TPBD_lab_project
             var result = dialogBox.ShowDialog();
             if (result == DialogResult.Cancel)
             {
-                GridViewUpdate();
+                GridViewUpdate("SELECT * FROM salarii_angajati");
             }
         }
 
-        private void GridViewUpdate()
+        private void GridViewUpdate(string query)
         {
             try
             {
                 cn = new OracleConnection("DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY "
                     + "INFO=True;USER ID=STUDENT");
                 cn.Open();
-                strSQL = "SELECT * FROM salarii_angajati";
-                da = new OracleDataAdapter(strSQL, cn);
+                da = new OracleDataAdapter(query, cn);
                 comanda = new OracleCommandBuilder(da);
                 ds = new DataSet();
                 da.Fill(ds, "salarii_angajati");
@@ -74,7 +72,7 @@ namespace TPBD_lab_project
             {
                 da.Update(ds.Tables["salarii_angajati"]);
                 ds.AcceptChanges();
-                GridViewUpdate();
+                GridViewUpdate("SELECT * FROM salarii_angajati");
                 MessageBox.Show("Date actualizate cu succes");
             }
             catch (Exception ex)
@@ -132,12 +130,9 @@ namespace TPBD_lab_project
         private void textBoxCautare_TextChanged(object sender, EventArgs e)
         {
             try {
-                strSQL = "SELECT * FROM salarii_angajati WHERE UPPER(nume) LIKE UPPER('%" + textBoxCautare.Text
+                string strSQL = "SELECT * FROM salarii_angajati WHERE UPPER(nume) LIKE UPPER('%" + textBoxCautare.Text
                     + "%') OR UPPER(prenume) LIKE UPPER('%" + textBoxCautare.Text + "%')";
-                da = new OracleDataAdapter(strSQL, cn);
-                ds = new DataSet();
-                da.Fill(ds, "salarii_angajati");
-                dataGridView1.DataSource = ds.Tables["salarii_angajati"].DefaultView;
+                GridViewUpdate(strSQL);
             }
             catch(Exception ex)
             {
