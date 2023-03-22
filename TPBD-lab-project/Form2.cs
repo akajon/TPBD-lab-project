@@ -21,17 +21,11 @@ namespace TPBD_lab_project
         {
             InitializeComponent();
 
-            // Add OK and CANCEL buttons
-            //var okButton = new Button();
-            //okButton.Text = "Adauga";
-            //buttonOK.DialogResult = DialogResult.None;
-            this.AcceptButton = buttonOK; // Sets the default button
+            this.AcceptButton = buttonOK; // Sets the default accept button
             this.Controls.Add(buttonOK);
 
-            //var cancelButton = new Button();
-            //cancelButton.Text = "Anulare";
             buttonCancel.DialogResult = DialogResult.Cancel;
-            this.CancelButton = buttonCancel; // Sets the cancel button
+            this.CancelButton = buttonCancel; // Sets the default cancel button
             this.Controls.Add(buttonCancel);
         }
 
@@ -61,7 +55,6 @@ namespace TPBD_lab_project
                     comanda.ExecuteNonQuery();
                     tranzactie.Commit();
                     MessageBox.Show("Datele au fost introduse");
-                    //Form1.GridViewUpdate();
                 }
                 catch (Exception ex)
                 {

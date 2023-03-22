@@ -123,6 +123,7 @@
             this.buttonStergAngajati.TabIndex = 2;
             this.buttonStergAngajati.Text = "Stergere Angajati";
             this.buttonStergAngajati.UseVisualStyleBackColor = true;
+            this.buttonStergAngajati.Click += new System.EventHandler(this.buttonStergAngajati_Click);
             // 
             // buttonAdaugAngajati
             // 

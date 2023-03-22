@@ -81,5 +81,32 @@ namespace TPBD_lab_project
                 MessageBox.Show("Nu s-au putut actualiza datele:\n" + ex.Message.ToString());
             }
         }
+
+        private void buttonStergAngajati_Click(object sender, EventArgs e)
+        {
+            string nume = dataGridView1.CurrentRow.Cells["NUME"].Value.ToString();
+            string prenume = dataGridView1.CurrentRow.Cells["PRENUME"].Value.ToString();
+            DialogResult dialog = MessageBox.Show("Doriti sa stergeti angajatul cu numele " + nume + " "
+                + prenume + "?", "Stergere", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (dialog == DialogResult.Yes)
+                {
+                    if (ds.Tables["salarii_angajati"].Rows.Count > 0)
+                    {
+                        int rownum = (dataGridView1.CurrentCell.RowIndex);
+                        DataRow Linie = ds.Tables["salarii_angajati"].Rows[rownum];
+                        Linie.Delete();
+                        da.Update(ds.Tables["salarii_angajati"]);
+                    }
+                    MessageBox.Show("Angajat sters cu succes");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nu s-a putut sterge angajatul:\n" + ex.Message.ToString());
+            }
+        }
     }
 }
