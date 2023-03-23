@@ -47,8 +47,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.CrystalReport11 = new TPBD_lab_project.CrystalReport1();
             this.buttonAjutor = new System.Windows.Forms.Button();
+            this.CrystalReport11 = new TPBD_lab_project.CrystalReport1();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.buttonActualizareHint = new System.Windows.Forms.Button();
+            this.buttonAdaugAngajatiHint = new System.Windows.Forms.Button();
+            this.buttonRefreshHint = new System.Windows.Forms.Button();
+            this.buttonStergAngajatiHint = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAjutor.SuspendLayout();
             this.tabPageIntroducereDate.SuspendLayout();
@@ -99,6 +104,7 @@
             // 
             // tabPageIntroducereDate
             // 
+            this.tabPageIntroducereDate.Controls.Add(this.buttonRefresh);
             this.tabPageIntroducereDate.Controls.Add(this.buttonStergAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonAdaugAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonActualizareDate);
@@ -136,7 +142,7 @@
             this.buttonActualizareDate.Name = "buttonActualizareDate";
             this.buttonActualizareDate.Size = new System.Drawing.Size(156, 23);
             this.buttonActualizareDate.TabIndex = 0;
-            this.buttonActualizareDate.Text = "Actualizare Date";
+            this.buttonActualizareDate.Text = "Salvare Date";
             this.buttonActualizareDate.UseVisualStyleBackColor = true;
             this.buttonActualizareDate.Click += new System.EventHandler(this.buttonActualizareDate_Click);
             // 
@@ -266,11 +272,65 @@
             this.buttonAjutor.UseVisualStyleBackColor = true;
             this.buttonAjutor.Click += new System.EventHandler(this.buttonAjutor_Click);
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(246, 17);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(156, 23);
+            this.buttonRefresh.TabIndex = 3;
+            this.buttonRefresh.Text = "Reinnoire Date";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
+            // buttonActualizareHint
+            // 
+            this.buttonActualizareHint.Location = new System.Drawing.Point(211, 162);
+            this.buttonActualizareHint.Name = "buttonActualizareHint";
+            this.buttonActualizareHint.Size = new System.Drawing.Size(156, 23);
+            this.buttonActualizareHint.TabIndex = 4;
+            this.buttonActualizareHint.Text = "Salvare Date";
+            this.buttonActualizareHint.UseVisualStyleBackColor = true;
+            this.buttonActualizareHint.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonAdaugAngajatiHint
+            // 
+            this.buttonAdaugAngajatiHint.Location = new System.Drawing.Point(535, 162);
+            this.buttonAdaugAngajatiHint.Name = "buttonAdaugAngajatiHint";
+            this.buttonAdaugAngajatiHint.Size = new System.Drawing.Size(156, 23);
+            this.buttonAdaugAngajatiHint.TabIndex = 4;
+            this.buttonAdaugAngajatiHint.Text = "Adaugare Angajati";
+            this.buttonAdaugAngajatiHint.UseVisualStyleBackColor = true;
+            this.buttonAdaugAngajatiHint.Click += new System.EventHandler(this.buttonAdaugAngajatiHint_Click);
+            // 
+            // buttonRefreshHint
+            // 
+            this.buttonRefreshHint.Location = new System.Drawing.Point(373, 161);
+            this.buttonRefreshHint.Name = "buttonRefreshHint";
+            this.buttonRefreshHint.Size = new System.Drawing.Size(156, 23);
+            this.buttonRefreshHint.TabIndex = 4;
+            this.buttonRefreshHint.Text = "Reinnoire Date";
+            this.buttonRefreshHint.UseVisualStyleBackColor = true;
+            this.buttonRefreshHint.Click += new System.EventHandler(this.buttonRefreshHint_Click);
+            // 
+            // buttonStergAngajatiHint
+            // 
+            this.buttonStergAngajatiHint.Location = new System.Drawing.Point(697, 161);
+            this.buttonStergAngajatiHint.Name = "buttonStergAngajatiHint";
+            this.buttonStergAngajatiHint.Size = new System.Drawing.Size(156, 23);
+            this.buttonStergAngajatiHint.TabIndex = 4;
+            this.buttonStergAngajatiHint.Text = "Stergere Angajat";
+            this.buttonStergAngajatiHint.UseVisualStyleBackColor = true;
+            this.buttonStergAngajatiHint.Click += new System.EventHandler(this.buttonStergAngajatiHint_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2041, 971);
+            this.Controls.Add(this.buttonStergAngajatiHint);
+            this.Controls.Add(this.buttonRefreshHint);
+            this.Controls.Add(this.buttonAdaugAngajatiHint);
+            this.Controls.Add(this.buttonActualizareHint);
             this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxCautare);
@@ -316,6 +376,11 @@
         private CrystalReport1 CrystalReport11;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private System.Windows.Forms.Button buttonAjutor;
+        private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Button buttonStergAngajatiHint;
+        private System.Windows.Forms.Button buttonRefreshHint;
+        private System.Windows.Forms.Button buttonAdaugAngajatiHint;
+        private System.Windows.Forms.Button buttonActualizareHint;
     }
 }
 

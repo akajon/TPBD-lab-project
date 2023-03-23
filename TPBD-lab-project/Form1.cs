@@ -74,7 +74,7 @@ namespace TPBD_lab_project
                 da.Update(ds.Tables["salarii_angajati"]);
                 ds.AcceptChanges();
                 GridViewUpdate("SELECT * FROM salarii_angajati");
-                MessageBox.Show("Date actualizate cu succes");
+                MessageBox.Show("Date salvate cu succes");
             }
             catch (Exception ex)
             {
@@ -168,6 +168,68 @@ namespace TPBD_lab_project
                 + "\n\n\t4. Modificare Procente:\n\t\t* Modificare procente: Modifica valorile procentelor pentru taxe in baza de date. "
                 + "Se vor recalcula salariile pentru toti angajatii. Este nevoie de introducere parola"
                 + "\n\n\t5. Iesire:\n\t\t* Iesire: Paraseste aplicatia");
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            GridViewUpdate("SELECT * FROM salarii_angajati");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                da.Update(ds.Tables["salarii_angajati"]);
+                ds.AcceptChanges();
+                GridViewUpdate("SELECT * FROM salarii_angajati");
+                MessageBox.Show("Date salvate cu succes");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + "\nEroare la actualizarea datelor din tabel...");
+            }
+        }
+
+        private void buttonRefreshHint_Click(object sender, EventArgs e)
+        {
+            GridViewUpdate("SELECT * FROM salarii_angajati");
+        }
+
+        private void buttonAdaugAngajatiHint_Click(object sender, EventArgs e)
+        {
+            var dialogBox = new Form2();
+            var result = dialogBox.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                GridViewUpdate("SELECT * FROM salarii_angajati");
+            }
+        }
+
+        private void buttonStergAngajatiHint_Click(object sender, EventArgs e)
+        {
+            string nume = dataGridView1.CurrentRow.Cells["NUME"].Value.ToString();
+            string prenume = dataGridView1.CurrentRow.Cells["PRENUME"].Value.ToString();
+            DialogResult dialog = MessageBox.Show("Doriti sa stergeti angajatul cu numele " + nume + " "
+                + prenume + "?", "Stergere angajat", MessageBoxButtons.YesNo);
+
+            try
+            {
+                if (dialog == DialogResult.Yes)
+                {
+                    if (ds.Tables["salarii_angajati"].Rows.Count > 0)
+                    {
+                        int rownum = (dataGridView1.CurrentCell.RowIndex);
+                        DataRow Linie = ds.Tables["salarii_angajati"].Rows[rownum];
+                        Linie.Delete();
+                        da.Update(ds.Tables["salarii_angajati"]);
+                    }
+                    MessageBox.Show("Angajat sters cu succes!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + "\nEroare la stergerea angajatului...");
+            }
         }
     }
 }
