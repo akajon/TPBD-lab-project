@@ -1,0 +1,14 @@
+﻿Oracle DB:
+	user: SYSTEM
+	password: system
+
+	user: pearja
+	password: pass12
+	
+	
+	user: STUDENT
+	passwordL STUDENT
+	
+	ConnectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID=STUDENT"
+	
+	password for taxes: pass123
