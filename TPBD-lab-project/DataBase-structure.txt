@@ -1,0 +1,157 @@
+﻿-- Set linesize for better output:
+SET LINESIZE 300
+
+-- Log in as SYSTEM and create new user
+CREATE USER STUDENT IDENTIFIED BY STUDENT;
+GRANT CREATE SESSION, RESOURCE TO STUDENT;
+
+-- Create tables
+CREATE TABLE salarii_angajati(
+	nr_crt INTEGER PRIMARY KEY,
+	nume VARCHAR(50),
+	prenume VARCHAR(50),
+	functie VARCHAR(30),
+	salar_baza INTEGER,
+	spor_procent INTEGER DEFAULT 0,
+	premii_brute INTEGER DEFAULT 0,
+	total_brut INTEGER,
+	brut_impozabil INTEGER,
+	impozit INTEGER,
+	cas INTEGER,
+	cass INTEGER,
+	retineri INTEGER DEFAULT 0,
+	virat_card INTEGER,
+	poza BLOB);
+
+CREATE TABLE valori_procentuale_impozite(
+	nr_crt INTEGER PRIMARY KEY,
+	cas_procent NUMBER(3,2),
+	cass_procent NUMBER(3,2),
+	impozit_procent NUMBER(3,2),
+	parola VARCHAR(255));
+	
+	
+-- Add auto increment on salarii_angajati.nr_crt
+CREATE SEQUENCE nr_crt_seq START WITH 1;
+
+CREATE OR REPLACE TRIGGER nr_crt_increment 
+BEFORE INSERT ON salarii_angajati 
+FOR EACH ROW
+BEGIN
+  SELECT nr_crt_seq.NEXTVAL INTO :NEW.nr_crt FROM dual;
+END;
+/
+-- End add auto increment
+
+-- Insert values for tax percentage
+INSERT INTO valori_procentuale_impozite VALUES(1, 0.25, 0.1, 0.1, 'pass123');
+
+-- Add trigger for INSERT on salarii_angajati
+CREATE OR REPLACE TRIGGER onInsertSalariiAngajati
+BEFORE INSERT ON salarii_angajati
+FOR EACH ROW
+DECLARE
+	total_brut INTEGER;
+	cas INTEGER;
+	cass INTEGER;
+	brut_impozabil INTEGER;
+	impozit INTEGER;
+	virat_card INTEGER;
+	cas_procent NUMBER(3,2);
+	cass_procent NUMBER(3,2);
+	impozit_procent NUMBER(3,2);
+BEGIN
+	SELECT cas_procent INTO cas_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT cass_procent INTO cass_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT impozit_procent INTO impozit_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+
+	total_brut := :NEW.salar_baza * (1 + :NEW.spor_procent / 100) + :NEW.premii_brute;
+	cas := total_brut * cas_procent;
+	cass := total_brut * cass_procent;
+	brut_impozabil := total_brut - cas - cass;
+	impozit := brut_impozabil * impozit_procent;
+	virat_card := total_brut - impozit - cas - cass - :NEW.retineri;
+
+	:NEW.total_brut := total_brut;
+	:NEW.brut_impozabil := brut_impozabil;
+	:NEW.impozit := impozit;
+	:NEW.cas := cas;
+	:NEW.cass := cass;
+	:NEW.virat_card := virat_card;
+END;
+/
+
+-- Add trigger for UPDATE on salarii_angajati
+CREATE OR REPLACE TRIGGER onUpdateSalariiAngajati
+BEFORE UPDATE ON salarii_angajati
+FOR EACH ROW
+DECLARE
+	total_brut INTEGER;
+	cas INTEGER;
+	cass INTEGER;
+	brut_impozabil INTEGER;
+	impozit INTEGER;
+	virat_card INTEGER;
+	cas_procent NUMBER(3,2);
+	cass_procent NUMBER(3,2);
+	impozit_procent NUMBER(3,2);
+BEGIN
+	SELECT cas_procent INTO cas_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT cass_procent INTO cass_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT impozit_procent INTO impozit_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+
+	total_brut := :NEW.salar_baza * (1 + :NEW.spor_procent / 100) + :NEW.premii_brute;
+	cas := total_brut * cas_procent;
+	cass := total_brut * cass_procent;
+	brut_impozabil := total_brut - cas - cass;
+	impozit := brut_impozabil * impozit_procent;
+	virat_card := total_brut - impozit - cas - cass - :NEW.retineri;
+
+	:NEW.total_brut := total_brut;
+	:NEW.brut_impozabil := brut_impozabil;
+	:NEW.impozit := impozit;
+	:NEW.cas := cas;
+	:NEW.cass := cass;
+	:NEW.virat_card := virat_card;
+END;
+/
+
+--Add procedure to update salarii_angajati when taxes in valori_procentuale_impozite  is updated
+CREATE OR REPLACE PROCEDURE updateSalariiWithNewTax
+AS
+	cas_procent NUMBER(3,2);
+	cass_procent NUMBER(3,2);
+	impozit_procent NUMBER(3,2);
+BEGIN
+	SELECT cas_procent INTO cas_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT cass_procent INTO cass_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT impozit_procent INTO impozit_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+
+    UPDATE salarii_angajati
+		SET cas = total_brut * cas_procent,
+		cass = total_brut * cass_procent,
+		brut_impozabil = total_brut - (total_brut * cas_procent) - (total_brut * cass_procent),
+		impozit = (total_brut - (total_brut * cas_procent) - (total_brut * cass_procent)) * impozit_procent,
+		virat_card = total_brut - ((total_brut - (total_brut * cas_procent) - (total_brut * cass_procent)) * impozit_procent)
+		- (total_brut * cas_procent) - (total_brut * cass_procent) - retineri;
+END;
+/
+
+-- Add data into tables
+INSERT INTO salarii_angajati(nume, prenume, functie, salar_baza, spor_procent, premii_brute, retineri) VALUES('Popescu', 'Ion', 'Inginer', 4000, 10, 0, 0);
+
+-- Commit your changes
+COMMIT;
+
+====================================
+Comenzi ajutatoare
+====================================
+
+SELECT * FROM salarii_angajati;
+SELECT * FROM valori_procentuale_impozite;
+
+DELETE FROM salarii_angajati;
+DELETE FROM valori_procentuale_impozite;
+
+DROP TABLE salarii_angajati;
+DROP TABLE valori_procentuale_impozite;
