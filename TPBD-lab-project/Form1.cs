@@ -160,7 +160,14 @@ namespace TPBD_lab_project
         private void buttonAjutor_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Aplicatie de gestionare a angajatilor companiei. Modul de operare:\n"
-                + "");
+                + "\n\n\t1.Ajutor:\n\t\t* Afisare Informatii Ajutatoare: Afiseaza meniul curent\n"
+                + "\n\n\t2.Introducere Date:\n\t\t* Actualizare date: Salveaza modificarile din interfata in baza de date\n"
+                + "\t\t* Adaugare Angajati: Adauga un nou angajat\n\t\t* Stergere angajat: Sterge angajatul selectat din "
+                + "baza de date\n\n\t3.Tiparire:\n\t\t* Stat plata: Afiseaza un raport cu toate datele despre angajatii selectati "
+                + "si suma totala\n\t\t* Fluturasi: Afiseaza fluturasii pentru angajatii selectati"
+                + "\n\n\t4. Modificare Procente:\n\t\t* Modificare procente: Modifica valorile procentelor pentru taxe in baza de date. "
+                + "Se vor recalcula salariile pentru toti angajatii. Este nevoie de introducere parola"
+                + "\n\n\t5. Iesire:\n\t\t* Iesire: Paraseste aplicatia");
         }
     }
 }

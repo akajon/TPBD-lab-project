@@ -93,9 +93,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(634, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(586, 59);
+            this.label1.Size = new System.Drawing.Size(678, 59);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Aplicatie calcul salarii angajati";
+            this.label1.Text = "Aplicatie gestionare salarii angajati";
             // 
             // tabPageIntroducereDate
             // 
@@ -116,7 +116,7 @@
             this.buttonStergAngajati.Name = "buttonStergAngajati";
             this.buttonStergAngajati.Size = new System.Drawing.Size(156, 23);
             this.buttonStergAngajati.TabIndex = 2;
-            this.buttonStergAngajati.Text = "Stergere Angajati";
+            this.buttonStergAngajati.Text = "Stergere Angajat";
             this.buttonStergAngajati.UseVisualStyleBackColor = true;
             this.buttonStergAngajati.Click += new System.EventHandler(this.buttonStergAngajati_Click);
             // 
