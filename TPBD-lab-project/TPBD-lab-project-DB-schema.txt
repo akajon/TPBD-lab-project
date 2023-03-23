@@ -116,6 +116,27 @@ BEGIN
 END;
 /
 
+--Add procedure to update salarii_angajati when taxes in valori_procentuale_impozite  is updated
+CREATE OR REPLACE PROCEDURE updateSalariiWithNewTax
+AS
+	cas_procent NUMBER(3,2);
+	cass_procent NUMBER(3,2);
+	impozit_procent NUMBER(3,2);
+BEGIN
+	SELECT cas_procent INTO cas_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT cass_procent INTO cass_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+	SELECT impozit_procent INTO impozit_procent FROM valori_procentuale_impozite WHERE nr_crt = 1;
+
+    UPDATE salarii_angajati
+		SET cas = total_brut * cas_procent,
+		cass = total_brut * cass_procent,
+		brut_impozabil = total_brut - (total_brut * cas_procent) - (total_brut * cass_procent),
+		impozit = (total_brut - (total_brut * cas_procent) - (total_brut * cass_procent)) * impozit_procent,
+		virat_card = total_brut - ((total_brut - (total_brut * cas_procent) - (total_brut * cass_procent)) * impozit_procent)
+		- (total_brut * cas_procent) - (total_brut * cass_procent) - retineri;
+END;
+/
+
 -- Add data into tables
 INSERT INTO salarii_angajati(nume, prenume, functie, salar_baza, spor_procent, premii_brute, retineri) VALUES('Popescu', 'Ion', 'Inginer', 4000, 10, 0, 0);
 

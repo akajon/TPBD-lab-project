@@ -114,6 +114,22 @@ namespace TPBD_lab_project
                 row["CASS_PROCENT"] = textBoxCass.Text;
                 row["IMPOZIT_PROCENT"] = textBoxImpozit.Text;
                 da.Update(ds, "valori_procentuale_impozite");
+                Console.WriteLine("Updated");
+                try
+                {
+                    //Execute procedure to update taxes with new data
+                    cn = new OracleConnection("DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY "
+                        + "INFO=True;USER ID=STUDENT");
+                    cn.Open();
+                    var cmd = new OracleCommand("updateSalariiWithNewTax", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
                 MessageBox.Show("Valori impozite modificate cu succes!");
             }
             else
