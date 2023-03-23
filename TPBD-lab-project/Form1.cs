@@ -119,12 +119,12 @@ namespace TPBD_lab_project
 
         private void buttonModifProc_Click(object sender, EventArgs e)
         {
-            //var dialogBox = new Form3();
-            //var result = dialogBox.ShowDialog();
-            //if (result == DialogResult.Cancel)
-            //{
-            //    GridViewUpdate();
-            //}
+            var dialogBox = new Form3();
+            var result = dialogBox.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                GridViewUpdate("SELECT * FROM salarii_angajati");
+            }
         }
 
         private void textBoxCautare_TextChanged(object sender, EventArgs e)
