@@ -46,8 +46,9 @@
             this.textBoxCautare = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.CrystalReport11 = new TPBD_lab_project.CrystalReport1();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.CrystalReport11 = new TPBD_lab_project.CrystalReport1();
+            this.buttonAjutor = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAjutor.SuspendLayout();
             this.tabPageIntroducereDate.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // tabPageAjutor
             // 
+            this.tabPageAjutor.Controls.Add(this.buttonAjutor);
             this.tabPageAjutor.Controls.Add(this.label1);
             this.tabPageAjutor.Location = new System.Drawing.Point(4, 35);
             this.tabPageAjutor.Name = "tabPageAjutor";
@@ -103,7 +105,7 @@
             this.tabPageIntroducereDate.Location = new System.Drawing.Point(4, 35);
             this.tabPageIntroducereDate.Name = "tabPageIntroducereDate";
             this.tabPageIntroducereDate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIntroducereDate.Size = new System.Drawing.Size(1953, 110);
+            this.tabPageIntroducereDate.Size = new System.Drawing.Size(2009, 110);
             this.tabPageIntroducereDate.TabIndex = 1;
             this.tabPageIntroducereDate.Text = "INTRODUCERE DATE";
             this.tabPageIntroducereDate.UseVisualStyleBackColor = true;
@@ -145,7 +147,7 @@
             this.tabPageTiparire.Location = new System.Drawing.Point(4, 35);
             this.tabPageTiparire.Name = "tabPageTiparire";
             this.tabPageTiparire.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTiparire.Size = new System.Drawing.Size(1953, 110);
+            this.tabPageTiparire.Size = new System.Drawing.Size(2009, 110);
             this.tabPageTiparire.TabIndex = 2;
             this.tabPageTiparire.Text = "TIPARIRE";
             this.tabPageTiparire.UseVisualStyleBackColor = true;
@@ -158,6 +160,7 @@
             this.buttonFluturasi.TabIndex = 1;
             this.buttonFluturasi.Text = "Fluturasi";
             this.buttonFluturasi.UseVisualStyleBackColor = true;
+            this.buttonFluturasi.Click += new System.EventHandler(this.buttonFluturasi_Click);
             // 
             // buttonStatPlata
             // 
@@ -175,7 +178,7 @@
             this.tabPageModificareProc.Location = new System.Drawing.Point(4, 35);
             this.tabPageModificareProc.Name = "tabPageModificareProc";
             this.tabPageModificareProc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageModificareProc.Size = new System.Drawing.Size(1953, 110);
+            this.tabPageModificareProc.Size = new System.Drawing.Size(2009, 110);
             this.tabPageModificareProc.TabIndex = 3;
             this.tabPageModificareProc.Text = "MODIFICARE PROCENTE";
             this.tabPageModificareProc.UseVisualStyleBackColor = true;
@@ -196,7 +199,7 @@
             this.tabPageIesire.Location = new System.Drawing.Point(4, 35);
             this.tabPageIesire.Name = "tabPageIesire";
             this.tabPageIesire.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIesire.Size = new System.Drawing.Size(1953, 110);
+            this.tabPageIesire.Size = new System.Drawing.Size(2009, 110);
             this.tabPageIesire.TabIndex = 4;
             this.tabPageIesire.Text = "IESIRE";
             this.tabPageIesire.UseVisualStyleBackColor = true;
@@ -253,6 +256,16 @@
             this.crystalReportViewer1.Size = new System.Drawing.Size(2013, 461);
             this.crystalReportViewer1.TabIndex = 5;
             // 
+            // buttonAjutor
+            // 
+            this.buttonAjutor.Location = new System.Drawing.Point(12, 16);
+            this.buttonAjutor.Name = "buttonAjutor";
+            this.buttonAjutor.Size = new System.Drawing.Size(216, 23);
+            this.buttonAjutor.TabIndex = 1;
+            this.buttonAjutor.Text = "Afisare Informatii Ajutatoare";
+            this.buttonAjutor.UseVisualStyleBackColor = true;
+            this.buttonAjutor.Click += new System.EventHandler(this.buttonAjutor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -302,6 +315,7 @@
         private System.Windows.Forms.TextBox textBoxCautare;
         private CrystalReport1 CrystalReport11;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private System.Windows.Forms.Button buttonAjutor;
     }
 }
 

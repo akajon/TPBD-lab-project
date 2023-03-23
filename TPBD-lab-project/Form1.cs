@@ -148,5 +148,19 @@ namespace TPBD_lab_project
             report.SetDataSource(ds.Tables["salarii_angajati"]);
             crystalReportViewer1.ReportSource = report;
         }
+
+        private void buttonFluturasi_Click(object sender, EventArgs e)
+        {
+            CrystalReport2 report = new CrystalReport2();
+            crystalReportViewer1.DisplayGroupTree = false;
+            report.SetDataSource(ds.Tables["salarii_angajati"]);
+            crystalReportViewer1.ReportSource = report;
+        }
+
+        private void buttonAjutor_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Aplicatie de gestionare a angajatilor companiei. Modul de operare:\n"
+                + "");
+        }
     }
 }
