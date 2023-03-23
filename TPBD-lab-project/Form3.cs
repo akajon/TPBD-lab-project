@@ -34,6 +34,10 @@ namespace TPBD_lab_project
             buttonCancel.DialogResult = DialogResult.Cancel;
             this.CancelButton = buttonCancel; // Sets the default cancel button
             this.Controls.Add(buttonCancel);
+
+            this.textBoxCas.KeyPress += textBoxDigit_KeyPress;
+            this.textBoxCass.KeyPress += textBoxDigit_KeyPress;
+            this.textBoxImpozit.KeyPress += textBoxDigit_KeyPress;
         }
 
         private static readonly byte[] key = Encoding.UTF8.GetBytes("oMV8lTg1QGXwfnk0");
@@ -135,6 +139,14 @@ namespace TPBD_lab_project
             else
             {
                 MessageBox.Show("Parola incorecta!");
+            }
+        }
+
+        void textBoxDigit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '\b')
+            {
+                e.Handled = true;
             }
         }
     }

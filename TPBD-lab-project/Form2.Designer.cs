@@ -134,6 +134,7 @@
             this.textBoxNume.Name = "textBoxNume";
             this.textBoxNume.Size = new System.Drawing.Size(191, 22);
             this.textBoxNume.TabIndex = 9;
+            this.textBoxNume.TextChanged += new System.EventHandler(this.textBoxNume_TextChanged);
             // 
             // textBoxPrenume
             // 
