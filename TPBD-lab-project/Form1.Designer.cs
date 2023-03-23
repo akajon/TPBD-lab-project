@@ -32,8 +32,6 @@
             this.tabPageAjutor = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageIntroducereDate = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxCautare = new System.Windows.Forms.TextBox();
             this.buttonStergAngajati = new System.Windows.Forms.Button();
             this.buttonAdaugAngajati = new System.Windows.Forms.Button();
             this.buttonActualizareDate = new System.Windows.Forms.Button();
@@ -44,8 +42,12 @@
             this.buttonModifProc = new System.Windows.Forms.Button();
             this.tabPageIesire = new System.Windows.Forms.TabPage();
             this.buttonIesire = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxCautare = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.CrystalReport11 = new TPBD_lab_project.CrystalReport1();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabControl1.SuspendLayout();
             this.tabPageAjutor.SuspendLayout();
             this.tabPageIntroducereDate.SuspendLayout();
@@ -67,7 +69,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(10, 8);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1961, 149);
+            this.tabControl1.Size = new System.Drawing.Size(2017, 149);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 0;
             // 
@@ -78,7 +80,7 @@
             this.tabPageAjutor.Name = "tabPageAjutor";
             this.tabPageAjutor.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageAjutor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabPageAjutor.Size = new System.Drawing.Size(1953, 110);
+            this.tabPageAjutor.Size = new System.Drawing.Size(2009, 110);
             this.tabPageAjutor.TabIndex = 0;
             this.tabPageAjutor.Text = "AJUTOR";
             this.tabPageAjutor.UseVisualStyleBackColor = true;
@@ -95,8 +97,6 @@
             // 
             // tabPageIntroducereDate
             // 
-            this.tabPageIntroducereDate.Controls.Add(this.label2);
-            this.tabPageIntroducereDate.Controls.Add(this.textBoxCautare);
             this.tabPageIntroducereDate.Controls.Add(this.buttonStergAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonAdaugAngajati);
             this.tabPageIntroducereDate.Controls.Add(this.buttonActualizareDate);
@@ -107,23 +107,6 @@
             this.tabPageIntroducereDate.TabIndex = 1;
             this.tabPageIntroducereDate.Text = "INTRODUCERE DATE";
             this.tabPageIntroducereDate.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(267, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Cautare:";
-            // 
-            // textBoxCautare
-            // 
-            this.textBoxCautare.Location = new System.Drawing.Point(347, 18);
-            this.textBoxCautare.Name = "textBoxCautare";
-            this.textBoxCautare.Size = new System.Drawing.Size(100, 22);
-            this.textBoxCautare.TabIndex = 3;
-            this.textBoxCautare.TextChanged += new System.EventHandler(this.textBoxCautare_TextChanged);
             // 
             // buttonStergAngajati
             // 
@@ -184,6 +167,7 @@
             this.buttonStatPlata.TabIndex = 0;
             this.buttonStatPlata.Text = "Stat Plata";
             this.buttonStatPlata.UseVisualStyleBackColor = true;
+            this.buttonStatPlata.Click += new System.EventHandler(this.buttonStatPlata_Click);
             // 
             // tabPageModificareProc
             // 
@@ -228,13 +212,30 @@
             this.buttonIesire.UseVisualStyleBackColor = false;
             this.buttonIesire.Click += new System.EventHandler(this.buttonIesire_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 165);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Filtrare:";
+            // 
+            // textBoxCautare
+            // 
+            this.textBoxCautare.Location = new System.Drawing.Point(105, 162);
+            this.textBoxCautare.Name = "textBoxCautare";
+            this.textBoxCautare.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCautare.TabIndex = 3;
+            this.textBoxCautare.TextChanged += new System.EventHandler(this.textBoxCautare_TextChanged);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 168);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 191);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1957, 285);
+            this.dataGridView1.Size = new System.Drawing.Size(2013, 285);
             this.dataGridView1.TabIndex = 1;
             // 
             // fileSystemWatcher1
@@ -242,11 +243,24 @@
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(16, 498);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(2013, 461);
+            this.crystalReportViewer1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1982, 904);
+            this.ClientSize = new System.Drawing.Size(2041, 971);
+            this.Controls.Add(this.crystalReportViewer1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxCautare);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
@@ -256,13 +270,13 @@
             this.tabPageAjutor.ResumeLayout(false);
             this.tabPageAjutor.PerformLayout();
             this.tabPageIntroducereDate.ResumeLayout(false);
-            this.tabPageIntroducereDate.PerformLayout();
             this.tabPageTiparire.ResumeLayout(false);
             this.tabPageModificareProc.ResumeLayout(false);
             this.tabPageIesire.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -286,6 +300,8 @@
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxCautare;
+        private CrystalReport1 CrystalReport11;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }
 

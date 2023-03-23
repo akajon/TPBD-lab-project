@@ -27,6 +27,9 @@ namespace TPBD_lab_project
             buttonCancel.DialogResult = DialogResult.Cancel;
             this.CancelButton = buttonCancel; // Sets the default cancel button
             this.Controls.Add(buttonCancel);
+            textBoxSpor.Text = "10";
+            textBoxPremii.Text = "0";
+            textBoxRetineri.Text = "0";
         }
 
         private void Form2_Load(object sender, EventArgs e)

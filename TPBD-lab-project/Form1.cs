@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
+using CrystalDecisions.CrystalReports;
 
 namespace TPBD_lab_project
 {
@@ -138,6 +139,14 @@ namespace TPBD_lab_project
             {
                 MessageBox.Show(ex.Message.ToString() + "\nEroare la filtrare...");
             }
+        }
+
+        private void buttonStatPlata_Click(object sender, EventArgs e)
+        {
+            CrystalReport1 report = new CrystalReport1();
+            crystalReportViewer1.DisplayGroupTree = false;
+            report.SetDataSource(ds.Tables["salarii_angajati"]);
+            crystalReportViewer1.ReportSource = report;
         }
     }
 }
