@@ -9,6 +9,7 @@ The actions implemented are:
   * Modify amount of taxes (Action protected by encrypted password)
   * Generate reports with selected employees, or all of them
   * Generate payslips for selected employees, or all of them
+  * Implemented keypress handlers for all text boxes to allow only specific characters
 
 The environment used when creating this project was a Hyper-V VM with Windows 10 x64 OS.
 As of Software:
